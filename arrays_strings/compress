@@ -1,0 +1,27 @@
+class CompressString(object):
+
+    def compress(self, string):
+        
+        if string is None or not string:
+            return string
+        # Search for the same char in a row
+        # # Count same chars in a row (>2 has to be mentioned)
+        # # If you find an other char write the last char with the number of hits onto the stack
+        #
+        string_comp = ''
+        counter = 0
+        prev_char = string[0]
+        for char in string:
+            if char == prev_char:
+                counter += 1
+                string_comp += char
+            elif counter > 2:
+                string_comp += char + str(counter)
+                counter = 0       
+                prev_char = char
+            else:
+                string_comp += char
+                counter = 0
+                prev_char = char
+        print(string_comp)    
+        return string_comp
